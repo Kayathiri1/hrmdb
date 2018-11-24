@@ -11,8 +11,8 @@
           <li><a href="#leave">Leave </a></li>
 
           <li><a href="#app_leave">Approve Leave</a></li>
-          <?php
-          <li><a href="#create_account">Create Account</a></li> ?>
+          
+          <li><a href="#create_account">Create Account</a></li> 
           <li class="menu-has-children"><a href=""><?php echo $_SESSION['uname']; ?></a>
             <ul>
               <li><a href="#">Change password</a></li>
