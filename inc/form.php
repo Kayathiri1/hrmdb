@@ -13,7 +13,7 @@ $db = mysqli_connect('localhost', 'root', '', 'hrm');
     $usertype=$uname[0];
     
     
-    $query="SELECT * FROM user_account WHERE emp_reg_id='$uname' AND password='$psw' ";
+    $query="SELECT * FROM user_account WHERE user_name='$uname' AND password='$psw' ";
     $result=mysqli_query($db,$query);
     if(mysqli_num_rows($result)>0){
 
@@ -171,7 +171,7 @@ if (isset($_POST['create'])) {
 
             $query = "INSERT INTO employee_job_details (emp_reg_id,  job_title, joined_date , reports_to, emp_status_id, department, branch, working_status)
                 VALUES('$emp_reg_id', '$job_title','$joined_date', '$reports_to','$emp_status_id','$department','$branch','$working_status')";
-            $query1 = "INSERT INTO user_account (emp_reg_id,  password, role)
+            $query1 = "INSERT INTO user_account (user_name,  password, role)
                 VALUES('$emp_reg_id', '$password','$role')";
 
              $query2 = "INSERT INTO emp_personel_details (emp_reg_id)
