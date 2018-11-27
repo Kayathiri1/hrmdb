@@ -8,11 +8,15 @@
         <ul class="nav-menu">
           <li class="menu-active"><a href="#account">Account</a></li>
           <li><a href="#info">Info</a></li>
-          <li><a href="#leave">Leave </a></li>
+          <?php if ($_SESSION['role']!="admin"){
+          echo "<li><a href=\"#leave\">Leave </a></li>";}?>
+
+          <?php if ($_SESSION['role']=="admin"){
+          echo "<li><a href=\"view_report.php\">View Report </a></li>";}?>
 
           <li><a href="#app_leave">Approve Leave</a></li>
-          
-          <li><a href="#create_account">Create Account</a></li> 
+          <?php if ($_SESSION['role']!="local_user"){
+          echo "<li><a href=\"create_account.php\">Create Account</a></li>"; }?>
           <li class="menu-has-children"><a href=""><?php echo $_SESSION['uname']; ?></a>
             <ul>
               <li><a href="#">Change password</a></li>
@@ -59,7 +63,7 @@
     <!--==========================
       Featured Services Section
     ============================-->
-    <section id="featured-services">
+   <!--===== <section id="featured-services">
       <div class="container">
         <div class="row">
 
@@ -111,6 +115,7 @@
               <div class="img">
                 
               </div>
+
               <h2 class="title"><a href="#">My info</a></h2>
                <div class="form">
                     <form method ='POST'>
@@ -237,7 +242,7 @@
     <!--==========================
       Call To Action Section
     ============================-->
-    <section id="call-to-action" class="wow fadeIn">
+    <!--<section id="call-to-action" class="wow fadeIn">
       <div class="container text-center">
         <h3>Call To Action</h3>
         <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -252,7 +257,7 @@
     <!--==========================
       Facts Section
     ============================-->
-    <section id="facts"  class="wow fadeIn">
+    <!--<section id="facts"  class="wow fadeIn">
       <div class="container">
 
         <header class="section-header">
@@ -457,7 +462,7 @@
     <!--==========================
       Clients Section
     ============================-->
-    <section id="clients" class="wow fadeInUp">
+    <!--<section id="clients" class="wow fadeInUp">
       <div class="container">
 
         <header class="section-header">
@@ -481,7 +486,7 @@
     <!--==========================
       Clients Section
     ============================-->
-    <section id="testimonials" class="section-bg wow fadeInUp">
+    <!--<section id="testimonials" class="section-bg wow fadeInUp">
       <div class="container">
 
         <header class="section-header">
@@ -553,117 +558,7 @@
     <!--==========================
       Team Section
     ============================-->
-    <section id="create_account">
-      <div class="container">
-        <div class="section-header wow fadeInUp">
-          <h3>Create Account</h3>
-          
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 wow fadeInUp">
-            <div class="member">
-              
-
-
-              <div class="member-info">
-                <div class="member-info-content">
-                  
-                    <form method="POST">
-                      <label for="emp_reg_id"><b>Registration ID</b></label><br>
-                      <input type="text" placeholder="Registration ID" name="emp_reg_id" required><br>
-
-                     <label for="job_title"><b>Job Title</b></label><br>
-                      <select name="job_title">
-                      <option value="hr manager">HR Manager</option>
-                      <option value="accountant">Accountant</option>
-                      <option value="software_engineer">Software Engineer</option>
-                      <option value="qa_engineer">QA Engineer</option>
-                    </select>
-
-                     <label for="joined_date"><b>Joined Date</b></label><br>
-                      <input type="date" placeholder="joined_date" name="joined_date" required><br>
-
-                      <label for="reports_to"><b>Reports To</b></label><br>
-                      <input type="text" placeholder="reports to" name="reports_to" required><br> 
-
-                      <label for="emp_status_id"><b>Employee status ID</b></label><br>
-                      <input type="text" placeholder="Employee ststus ID" name="emp_status_id" required><br>  
-
-              <br><br>
-
-                
-                  
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="member">
-             
-              <div class="member-info">
-                <div class="member-info-content">
-                    <label for="department"><b>Department</b></label><br>
-                      <select name="department">
-                      <option value="d001">Finance</option>
-                      <option value="d002">Management</option>
-                      <option value="d003">Technical</option>
-                    </select><br><br>
-                    <label for="branch"><b>Department</b></label><br>
-                      <select name="branch">
-                      <option value="b001">North</option>
-                      <option value="b002">South</option>
-                      <option value="b003">East</option>
-                      <option value="b004">West</option>
-                      <option value="b005">Central</option>
-                    </select><br><br>
-                  
-                   <label for="role"><b>Role</b></label><br>
-                      <select name="role">
-                      <option value="hrm_user">hrm_user</option>
-                      <option value="SecondManager_user">SecondManager_user</option>
-                      <option value="local_user">local_user</option>           
-                      <option value="admin">admin</option>                     
-          
-                    </select><br><br>
-
-                     <div class="clearfix">
-                      <button type="submit" class="btn btn-success" name="create">Create &raquo;</button>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-            <div class="member">
-             
-              <div class="member-info">
-                <div class="member-info-content">
-                 
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-            <div class="member">
-             
-              <div class="member-info">
-                <div class="member-info-content">
-                 
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- #team -->
+    
 
     <!--==========================
       Contact Section
