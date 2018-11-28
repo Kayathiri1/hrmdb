@@ -211,7 +211,7 @@
           </div>
           <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
        <div class="form">
-                    <form method ='POST'>
+                    <form method ='POST' action="inc/login.inc.php">
                     
                     
                     <hr>

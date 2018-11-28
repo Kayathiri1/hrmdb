@@ -1,7 +1,7 @@
 <?php include('inc/form.php'); ?>
-<?php include('inc/header.php'); ?>
-
-
+<?php include('inc/header.php'); 
+session_start();
+?>
 
 
       <nav id="nav-menu-container">
@@ -15,7 +15,7 @@
           <li class="menu-has-children"><a href=""><?php echo $_SESSION['uname']; ?></a>
             <ul>
               <li><a href="#">Change password</a></li>
-              <li><a href="logout.php?logout='1'">Logout</a></li>
+              <li><a href="inc/logout.inc.php?logout='1'">Logout</a></li>
              
             </ul>
           </li>
@@ -75,7 +75,7 @@
 
                      <label for="job_title"><b>Job Title</b></label><br>
                       <select name="job_title">
-                      <option value="hr manager">HR Manager</option>
+                      <option value="hr_manager">HR Manager</option>
                       <option value="accountant">Accountant</option>
                       <option value="software_engineer">Software Engineer</option>
                       <option value="qa_engineer">QA Engineer</option>
