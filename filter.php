@@ -64,9 +64,34 @@ if (isset($_POST['view_salary'])){
 
   if (isset($_POST['Filter_dep'])){
     $department=mysqli_real_escape_string($db,$_POST['department']);
-    
+
     $query="CALL employee_department('$department')";
     $result1=mysqli_query($db,$query);
+
+
+
+   //$result=mysqli_next_result($db);
+    if (mysqli_num_rows($result1)>0){
+           while ($row3=mysqli_fetch_assoc($result1)){
+    echo "<option value=".$row3['emp_reg_id'].">".$row3['emp_reg_id']."</option>";
+
+         }
+     }else{
+      header("location:account.php");
+     }
+
+
+
+  }
+
+
+  if (isset($_POST['Filter_branch'])){
+    $branch=mysqli_real_escape_string($db,$_POST['branch']);
+
+    $query="CALL employee_branch_report('$branch')";
+    $result1=mysqli_query($db,$query);
+
+
 
    //$result=mysqli_next_result($db);
     if (mysqli_num_rows($result1)>0){
@@ -116,14 +141,21 @@ if (isset($_POST['view_salary'])){
     $job_title=mysqli_real_escape_string($db,$_POST['job_title']);
   echo "<option value=".$job_title.">".$job_title."</option>";
    echo "=========";
-    $query="SELECT emp_reg_id ,first_name,surname FROM employee_job_details natural join emp_personel_details WHERE job_title='$job_title'";
-    $result=mysqli_query($db,$query);
-     if (mysqli_num_rows($result)>0){
-              while ($row3=mysqli_fetch_assoc($result)){
-              echo "<option value=".$row3['emp_reg_id'].">".$row3['emp_reg_id'],"       :   ",$row3['first_name'],"            ",$row3['surname']."</option>";
+     $query="CALL employee_jobtitle_report('$job_title')";
+    $result1=mysqli_query($db,$query);
 
-            }
-        }}
+
+
+   //$result=mysqli_next_result($db);
+    if (mysqli_num_rows($result1)>0){
+           while ($row3=mysqli_fetch_assoc($result1)){
+    echo "<option value=".$row3['emp_reg_id'].">".$row3['emp_reg_id']."</option>";
+
+         }
+     }else{
+      header("location:account.php");
+     }
+}
 
      if (isset($_POST['Filter_paygrade'])){
 
@@ -138,14 +170,20 @@ if (isset($_POST['view_salary'])){
             }
         }
 
-    $query="SELECT emp_reg_id ,first_name ,surname from emp_personel_details natural join employee_paygrade_details WHERE paygrade_id='$paygrade_id'";
-    $result=mysqli_query($db,$query);
-     if (mysqli_num_rows($result)>0){
-              while ($row3=mysqli_fetch_assoc($result)){
-              echo "<option value=".$row3['emp_reg_id'].">".$row3['emp_reg_id'],"       :   ",$row3['first_name'],"            ",$row3['surname']."</option>";
+    $query="CALL employee_paygrade_report('$paygrade_id')";
+    $result1=mysqli_query($db,$query);
 
-            }
-        }}
+
+
+   //$result=mysqli_next_result($db);
+    if (mysqli_num_rows($result1)>0){
+           while ($row3=mysqli_fetch_assoc($result1)){
+    echo "<option value=".$row3['emp_reg_id'].">".$row3['emp_reg_id']."</option>";
+
+         }
+     }else{
+      header("location:account.php");
+     }}
 
 
     ?>

@@ -78,6 +78,27 @@
                       <div class="clearfix"><br>
                       <button type="submit" class="btn btn-success" name="Filter_dep">Filter by department &raquo;</button>
                     </div>
+                  </form><br>
+                  <h3>Filter By</h3>
+                  
+                    <form method="POST" action="filter.php">
+                      <label for="branch"><b>Branch</b></label><br>
+                       <select name="branch">
+                       <?php
+                        $db = mysqli_connect('localhost', 'root', '', 'hrm');
+                        $sql=("SELECT name,branch_id FROM branch");
+                        $result=mysqli_query($db,$sql);
+                        if (mysqli_num_rows($result)>0){
+                          while ($row3=mysqli_fetch_assoc($result)){
+                            echo "<option value=".$row3['name'].">".$row3['name']."</option>";
+
+                          }
+                        }?>
+                      </select>
+                      
+                      <div class="clearfix"><br>
+                      <button type="submit" class="btn btn-success" name="Filter_branch">Filter by department &raquo;</button>
+                    </div>
                   </form>
                     
               <br><br>
