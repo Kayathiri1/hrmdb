@@ -23,11 +23,15 @@ if (isset($_POST['apply'])) {
     if(mysqli_num_rows($result)==1){
         $query = "INSERT INTO _leave (emp_reg_id,  leave_type, leave_days , fromdt, leave_status)
             VALUES('$emp_reg_id', '$leave_type','$leave_days', '$fromdt','$leave_status')";
-       mysqli_query($db, $query);
-      
+       $var=mysqli_query($db, $query);
+      if($var){
       header("location:../account.php?Successfully_Submitted");
-      echo "##############You application submitted successfully";
-        echo "<script type='text/javascript'>alert('Passwords don't match!')</script>";
+    }
+      else{
+              header("location:../account.php?You_can_only_apply_leave_for_future");
+
+      }
+     
     }else{
       header("location:../account.php?Failed");
     }

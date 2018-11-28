@@ -11,9 +11,10 @@ $db = mysqli_connect('localhost', 'root', '', 'hrm');
     $uname=mysqli_real_escape_string($db,$_POST['uname']);
     $psw=mysqli_real_escape_string($db,$_POST['psw']);
     $usertype=$uname[0];
+    $psw1=md5($psw);
     
     
-    $query="SELECT * FROM user_account WHERE user_name='$uname' AND password='$psw' ";
+    $query="SELECT * FROM user_account WHERE user_name='$uname' AND password='$psw1' ";
     $result=mysqli_query($db,$query);
     if(mysqli_num_rows($result)>0){
 
@@ -32,7 +33,7 @@ $db = mysqli_connect('localhost', 'root', '', 'hrm');
 
    }else{
       $_SESSION['wrong']="Username/Password incorrect";
-      header("location:../index.php?LoginFailed");
+      header("location:../index.php?");
       
 
     }

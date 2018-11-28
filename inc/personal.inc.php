@@ -28,30 +28,15 @@ if (isset($_POST['update'])) {
     $result=mysqli_query($db,$query);
     $result1=mysqli_query($db,$query1);
 
-$query = "INSERT INTO emp_personel_details (emp_reg_id,  first_name, surname , marital_status, phoneno, emailid, bd_date, gender)
-                VALUES('$emp_reg_id', '$first_name','$surname', '$marital_status','$phoneno','$emailid','$bd_date','$gender')";
-            mysqli_query($db, $query);
-      
-            header("location:../account.php?Successfully_Updated");
-
-
-    if(mysqli_num_rows($result)==1){
-          if(mysqli_num_rows($result1)==0){
-
-            $query = "INSERT INTO emp_personel_details (emp_reg_id,  first_name, surname , marital_status, phoneno, emailid, bd_date, gender)
-                VALUES('$emp_reg_id', '$first_name','$surname', '$marital_status','$phoneno','$emailid','$bd_date','$gender')";
-            mysqli_query($db, $query);
-      
-            header("location:../account.php?Successfully_Updated");
-          }else{
-             $query = "UPDATE emp_personel_details set first_name='$first_name',surname='$surname',marital_status='$marital_status',phoneno='$phoneno',emailid='$emailid',bd_date='$bd_date', gender='$gender' where emp_reg_id='$emp_reg_id'";
-            mysqli_query($db, $query);
-      
-            header("location:../account.php?Successfully_Updated");
+ $query = "UPDATE emp_personel_details set first_name='$first_name',surname='$surname',marital_status='$marital_status',phoneno='$phoneno',emailid='$emailid',bd_date='$bd_date', gender='$gender' where emp_reg_id='$emp_reg_id'";
+           $var= mysqli_query($db, $query);
+            if($var){
+            header("location:../account.php?Successfully_Updated");}
+          else{
+                      header("location:../account.php?Failed");}
+  
           }
-    }else{
-      header("location:../account.php?Failed");
-    }
+
     
-}
+
 ?>
